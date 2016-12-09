@@ -22,7 +22,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     var refresh = function ()
     {
-        $http.get('http://localhost:3000/admin/itemlist').success(function (response) {
+        $http.get('../admin/itemlist').success(function (response) {
             console.log("I got the data I requested");
             $scope.itemlist = response;
             $scope.item = "";
@@ -32,7 +32,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.addItem = function ()
     {
-        $http.post('http://localhost:3000/admin/itemlist',$scope.item).success(function (response)
+        $http.post('../admin/itemlist',$scope.item).success(function (response)
         {
             console.log("I am inside Add Items : ", response);
             refresh();
@@ -41,7 +41,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.remove = function(id) {
         console.log(id);
-        $http.delete('http://localhost:3000/admin/itemlist/'+id).success(function(response)
+        $http.delete('../admin/itemlist/'+id).success(function(response)
         {
             console.log("I am inside Delete Item", response);
             refresh();
@@ -53,7 +53,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.edit = function(id) {
         console.log(id);
-        $http.get('http://localhost:3000/admin/itemlist/'+id).success(function(response)
+        $http.get('../admin/itemlist/'+id).success(function(response)
         {
             console.log("I am inside Edit Item");
             $scope.item = response;
@@ -66,7 +66,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.update = function() {
         //console.log("Scope Item Id: ", $scope.item._id);
         console.log("Inside Update Scope Item: ", $scope.item);
-        $http.put('http://localhost:3000/admin/itemlist/' + $scope.item._id, $scope.item).success(function(response) {
+        $http.put('../admin/itemlist/' + $scope.item._id, $scope.item).success(function(response) {
             refresh();
         })
     };
@@ -79,7 +79,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     var refreshUser = function ()
     {
-        $http.get('http://localhost:3000/admin/customer').success(function (response) {
+        $http.get('../admin/customer').success(function (response) {
             console.log("I got the customers I requested");
             $scope.customerlist = response;
             $scope.customer = "";
@@ -89,7 +89,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.addCustomer = function ()
     {
-        $http.post('http://localhost:3000/admin/customer',$scope.customer).success(function (response)
+        $http.post('../admin/customer',$scope.customer).success(function (response)
         {
             console.log("I am inside Add Customer : ", response);
             refreshUser();
@@ -98,7 +98,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.removeCustomer = function(id) {
         console.log(id);
-        $http.delete('http://localhost:3000/admin/customer/'+id).success(function(response)
+        $http.delete('../admin/customer/'+id).success(function(response)
         {
             console.log("I am inside Delete Customer", response);
             refreshUser();
@@ -110,7 +110,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.editCustomer = function(id) {
         console.log(id);
-        $http.get('http://localhost:3000/admin/customer/'+id).success(function(response)
+        $http.get('../admin/customer/'+id).success(function(response)
         {
             console.log("I am inside Edit Customer");
             $scope.customer = response;
@@ -123,7 +123,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.updateCustomer = function() {
         //console.log("Scope Item Id: ", $scope.item._id);
         console.log("Inside Update Scope Customer: ", $scope.customer);
-        $http.put('http://localhost:3000/admin/customer/' + $scope.customer._id, $scope.customer).success(function(response) {
+        $http.put('../admin/customer/' + $scope.customer._id, $scope.customer).success(function(response) {
             refreshUser();
         })
     };
