@@ -18,7 +18,7 @@ router.get('/itemlist', function (req, res) {
 router.get('/itemlist/:id', function (req, res) {
     var id = req.params.id;
     console.log(id);
-    item.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    item.findOne({itemName: req.params.id}, function (err, doc) {
         res.json(doc);
     });
 });
@@ -36,7 +36,7 @@ router.put('/itemlist/:id', function (req, res) {
     var id = req.params.id;
     console.log(req.body.name);
     item.findAndModify({
-            query: {_id: mongojs.ObjectId(id)},
+            query: {itemName: req.params.id},
             update: {$set:
             {itemName: req.body.itemName, itemType: req.body.itemType, itemDescription: req.body.itemDescription,
                 itemPrice: req.body.itemPrice, itemQnty: req.body.itemQnty, itemManufacturer: req.body.itemManufacturer,
@@ -51,7 +51,7 @@ router.put('/itemlist/:id', function (req, res) {
 router.delete('/itemlist/:id', function (req, res) {
     var id = req.params.id;
     console.log(id);
-    item.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    item.remove({itemName: req.params.id}, function (err, doc) {
         res.json(doc);
     });
 });

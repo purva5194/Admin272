@@ -66,7 +66,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.update = function() {
         //console.log("Scope Item Id: ", $scope.item._id);
         console.log("Inside Update Scope Item: ", $scope.item);
-        $http.put('../admin/itemlist/' + $scope.item._id, $scope.item).success(function(response) {
+        $http.put('../admin/itemlist/' + $scope.item.itemName, $scope.item).success(function(response) {
             refresh();
         })
     };
